@@ -12,6 +12,8 @@ let config = {
   connectionLimit: 10,
 };
 
+var pool = mysql.createPool(config);
+
 app.get("/", (req, res) => {
   pool.query("SELECT * Customer", (error, results) => {
     res.send(results);
