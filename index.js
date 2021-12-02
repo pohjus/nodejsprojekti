@@ -15,9 +15,15 @@ let config = {
 var pool = mysql.createPool(config);
 
 app.get("/", (req, res) => {
-  pool.query("SELECT * Customer", (error, results) => {
-    res.send(results);
+  pool.query("SELECT * from location", (error, results) => {
+    console.log(results);
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(results);
+    }
   });
+  console.log("a");
 });
 
 const server = app.listen(port, () => {
